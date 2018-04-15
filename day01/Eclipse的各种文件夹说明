@@ -1,0 +1,27 @@
+一直都是在现有的代码结构上增删文件，没有实际了解各种文件夹的作用和区别，现在做一个简单的了解
+区别：
+	folder：folder就是普通的文件夹，它和我们window下面使用的文件夹没有任何区别；
+	source folder：source folder文件夹是一种特别的文件夹，如果你用面向对象的思想去看待这个source folder，
+							那么他是folder的一个子集，作为子集，肯定是有folder的所有功能，而且还有自己特别的功能，
+							他的特别之处，就是在source folder下面的java文件都会被编译，
+							编译后的文件会被放在我们设置的某个文件夹下面（一般我们在新建工程的时候设置成WEB-INF/classes），
+							source folder下面的非java文件会被copy一份放在我们的设置的文件夹下面；
+	package：package文件夹也是一种特别的文件夹，他的特别之处在于：他必须存在于source folder下面，上下级通过.来区分，
+					他的路径最后组成了每一个类的包路径名；
+作用：
+	1.folder就是最普通的文件夹，你任何想放在eclipse 下面的文件都可以放在folder下面；
+	2.source folder 设计出来就是用来放待编译的java文件的，因为java文件要先被编译，那么就出现了一个问题，
+		那么文件夹下面的能被编译？那个文件夹下面的不能被编译？
+		所以就设计出来一个特别的文件夹叫source folder，放在他下面的java文件就能被编译，
+		而且，可以通过一定的配置将编译文件放在你配置的文件夹下面；
+	3.package，设计出来就是给java文件用来分包的，说白了，就是为了好管理java文件，如果source folder看做是一座大楼，
+		那么我们是通过package将这座大楼分成了不同的楼层，不同的房间，不同的楼层不同的房间我们用来做不同的事情，
+		房间里面放了很多java类，有一点注意的是，最后package组成了一个路径名，这个路径名不是物理路径，但java，里面很多时候
+		，就是用这个package组成的路径名，如：web.xml,spring.xml等很多的配置；
+转换：
+	package 转成 folder 显示：选中package, build path-> Exclude 
+	folder 转成 package 显示：选中folder, build path-> Include 
+
+	package 转成 source folder 显示：选中package, build path-> Use as Source folder 
+	source folder 转成 package 显示：选中folder, build path-> Remove from BuildPath  
+	
